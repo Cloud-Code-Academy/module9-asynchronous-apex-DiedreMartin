@@ -27,9 +27,12 @@ public with sharing class NextStepFuture {
      * Opportunity Next Step field is a standard field
      * Update the corresponding test class AsynchronousTest and test method nextStepFuture_testUpdateAllNextStep to cover test this method
      */
-    //[public | private ] [static] data_type method_name (input parameters) {
-    //  The body of the method
-    //}
+    @future
+     public static void UpdateAllNextStep(String nextStep) {
+    
+    
+        //  The body of the method
+        }
 
     /*
     * Question 2
