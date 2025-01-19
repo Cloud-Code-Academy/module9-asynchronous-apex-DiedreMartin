@@ -27,7 +27,7 @@
 public with sharing class AsynchronousTest {
 
     @IsTest
-    static void nextStepFuture_testUpdateAllNextStep() {
+    static void nextStepFuture_testupdateAllNextStep() {
         // Create test data
         List<Account> testAccounts = new List<Account>();
         for (Integer i = 0; i < 5; i++) {
@@ -43,7 +43,7 @@ public with sharing class AsynchronousTest {
 
         // Call the method to test between the startTest and stopTest methods
         Test.startTest();
-        //YOUR CODE HERE
+        NextStepFuture.updateAllNextStep('Meeting in the future');
         Test.stopTest();
 
         // Query the updated accounts and opportunities
@@ -62,7 +62,7 @@ public with sharing class AsynchronousTest {
     }
 
     @IsTest
-    static void nextStepFuture_testCreateDealAndUpdateRole() {        
+    static void nextStepFuture_testCreateDealAndUpdateRole(){        
         Test.startTest();
         NextStepFuture.createDealAndUpdateRole();
         Test.stopTest();
@@ -76,6 +76,7 @@ public with sharing class AsynchronousTest {
         UserRole[] updatedRoles = [SELECT Id, Name FROM UserRole WHERE Name = 'CRO' LIMIT 1];
         System.assertEquals(1, updatedRoles.size(), 'UserRole should exist.');
     }
+
 
     @IsTest
     static void nextStepQueueable_testEnqueueJob() {
@@ -112,7 +113,9 @@ public with sharing class AsynchronousTest {
         }
     }
 
-    @IsTest
+
+@IsTest
+
     static void nextStepBatch_testUpdateAllNextStep() {
         // Create test data
         List<Account> testAccounts = new List<Account>();
@@ -127,7 +130,7 @@ public with sharing class AsynchronousTest {
         }
         insert testOpps;
 
-        // Call the batch class
+       // Call the batch class
         Test.startTest();
         NextStepBatch batchJob = new NextStepBatch();
         Id batchId = Database.executeBatch(batchJob);
@@ -151,6 +154,7 @@ public with sharing class AsynchronousTest {
     /*  //UNCOMMENT TEST METHODS BELOW ONCE THE NextStepSchedule class is implemented
         //No Changes should be required to the test methods/code below other than uncommenting them
         //Manually setup the scheduled job in Salesforce to run the NextStepSchedule class
+        */
     @IsTest
     static void nextStepSchedule_testExecute() {
         // Create test data
@@ -189,5 +193,4 @@ public with sharing class AsynchronousTest {
             System.assertEquals('Batching the next meetings together.', opp.NextStep, 'Opportunity NextStep field was not updated correctly.');
         }
     }
-    */
 }
